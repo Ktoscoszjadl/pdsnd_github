@@ -77,8 +77,10 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.day_name()
     df['hour'] = df['Start Time'].dt.hour
+
     # filter by month if applicable
     if month != 'all':
+
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
@@ -197,7 +199,6 @@ def main():
         trip_duration_stats(df)
         user_stats(df, city)
         raw_data(df)
-
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
