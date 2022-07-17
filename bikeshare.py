@@ -21,7 +21,9 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs:
+
     which_city = ''
     while which_city.lower() not in CITY_DATA.keys():
         which_city = input('\nChoose city : Chicago, New York City, Washington (not case sensitive):\n')
@@ -30,7 +32,8 @@ def get_filters():
         else:
             print('Invalid input. Not able to read which city')     
 
-    # get user input for month (all, january, february, ... , june)
+    # get user input for month (all, january, february, ... , june):
+
     which_month = ''
     while which_month.lower() not in MONTH_DATA:
         which_month = input('\nChoose month: January, February, March, April, May, June or all (not case sensitive):\n')
@@ -40,7 +43,8 @@ def get_filters():
             print('Invalid input. Not able to read which month')  
 
 
-    # get user input for day of week (all, monday, tuesday, ... sunday)
+    # get user input for day of week (all, monday, tuesday, ... sunday):
+
     which_day = ''
     while which_day.lower() not in DAY_DATA:
         which_day = input('\nChoose day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all (not case sensitive):\n')
@@ -73,8 +77,10 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.day_name()
     df['hour'] = df['Start Time'].dt.hour
+
     # filter by month if applicable
     if month != 'all':
+
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
@@ -193,7 +199,6 @@ def main():
         trip_duration_stats(df)
         user_stats(df, city)
         raw_data(df)
-
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
